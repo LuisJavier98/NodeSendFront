@@ -1,8 +1,7 @@
 
 import clienteAxios from '@/config/axios'
 import { config } from '@/config/tokenAuth'
-import React, { useContext, useReducer } from 'react'
-import AuthContext from '../auth/authProvider'
+import React, { useReducer } from 'react'
 import AppContext from './appContext'
 import appReducerFunction from './appReducer'
 
@@ -36,6 +35,8 @@ const AppState = ({ children }) => {
   }
 
   const subirArchivo = async (formData, nombreArchivo) => {
+
+    console.log(process.env.backendURL)
     dispatch({
       type: 'SUBIR_ARCHIVO'
     })
@@ -50,6 +51,7 @@ const AppState = ({ children }) => {
       })
       console.log(resultado.data)
     } catch (error) {
+      console.log(error)
       dispatch({
         type: 'SUBIR_ARCHIVO_ERROR',
         payload: error.response.data.msg

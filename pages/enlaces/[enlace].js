@@ -8,12 +8,13 @@ const EnlaceUrl = ({ enlace }) => {
   const [tienePassword, settienePassword] = useState(enlace.password)
   const [password, setpassword] = useState('')
   const { mostrarAlerta, mensaje_archivo } = useContext(AppContext)
-
+  console.log(enlace)
   const verificarPassword = async e => {
     e.preventDefault()
     try {
-      const resultado = await clienteAxios(`/api/enlaces/${enlace.enlace}`, { password })
+      const resultado = await clienteAxios.post(`/api/enlaces/${enlace.enlace}`, { password })
       settienePassword(resultado.data.password)
+
 
     } catch (error) {
       mostrarAlerta(error.response.data.msg)
