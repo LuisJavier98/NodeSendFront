@@ -36,7 +36,6 @@ const AppState = ({ children }) => {
 
   const subirArchivo = async (formData, nombreArchivo) => {
 
-    console.log(process.env.backendURL)
     dispatch({
       type: 'SUBIR_ARCHIVO'
     })
@@ -49,7 +48,6 @@ const AppState = ({ children }) => {
           nombre_original: nombreArchivo
         }
       })
-      console.log(resultado.data)
     } catch (error) {
       console.log(error)
       dispatch({
